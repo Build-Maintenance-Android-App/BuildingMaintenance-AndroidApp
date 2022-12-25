@@ -8,7 +8,7 @@ public class ApiClient {
     public  static  Retrofit getRetrofit(){
         if(retrofit == null){
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://localhost:3000/api/")
+                    .baseUrl("https://mobile-backend-6qx3.vercel.app/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
