@@ -14,14 +14,14 @@
         android:layout_width="233dp"
         android:layout_height="50dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="348dp"
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColor="#F3EBEB"
-        android:textColorHighlight="#FF03DAC5"
-        android:textColorHint="#FF03DAC5" />
+        android:textColorHighlight="#267FC6"
+        android:textColorHint="#25DD2C" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -34,7 +34,7 @@
         android:minHeight="48dp"
         android:textColor="#F3EBEB"
         android:textColorHighlight="#FF03DAC5"
-        android:textColorHint="#FF03DAC5" />
+        android:textColorHint="#25DD2C" />
 
 
     <EditText
@@ -48,7 +48,7 @@
         android:minHeight="48dp"
         android:textColor="#F3EBEB"
         android:textColorHighlight="#FF03DAC5"
-        android:textColorHint="#FF03DAC5" />
+        android:textColorHint="#25DD2C" />
 
     <Button
         android:id="@+id/button4"
@@ -60,7 +60,6 @@
         android:backgroundTint="#1D1E20"
         android:gravity="center"
         android:text="@string/Login" />
-
 
 
 </LinearLayout>
