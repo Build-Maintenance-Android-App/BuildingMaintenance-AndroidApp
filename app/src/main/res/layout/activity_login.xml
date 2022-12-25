@@ -9,6 +9,15 @@
     tools:context=".Activities.LoginActivity">
 
 
+    <TextView
+        android:id="@+id/authHeader"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:text="@string/Resident_AUTH_HEADER"
+        android:textColor="@color/teal_200"
+        android:textSize="24sp" />
+
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="233dp"
@@ -37,21 +46,8 @@
         android:textColorHint="#25DD2C" />
 
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:ems="10"
-        android:hint="@string/BuildingCode"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textColor="#F3EBEB"
-        android:textColorHighlight="#FF03DAC5"
-        android:textColorHint="#25DD2C" />
-
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/loginBtn"
         android:layout_width="197dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
@@ -60,6 +56,37 @@
         android:backgroundTint="#1D1E20"
         android:gravity="center"
         android:text="@string/Login" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/authpageChangeTv"
+        android:textColor="#4CAF50"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="210dp"
+            android:layout_height="match_parent"
+            android:text="@string/choice1"
+            android:textColor="#FFEB3B" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="204dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:text="@string/choice2"
+            android:textColor="#FFEB3B" />
+
+    </RadioGroup>
 
 
 </LinearLayout>

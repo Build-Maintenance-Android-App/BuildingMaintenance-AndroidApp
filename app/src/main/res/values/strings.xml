@@ -4,4 +4,8 @@
     <string name="Email">Email:</string>
     <string name="Password">Password</string>
     <string name="BuildingCode">Building Code</string>
+    <string name="Resident_AUTH_HEADER">Resident Account</string>
+    <string name="authpageChangeTv">Don\'t you have an account?</string>
+    <string name="choice1">Create a resident account</string>
+    <string name="choice2">Create a Building Account</string>
 </resources>

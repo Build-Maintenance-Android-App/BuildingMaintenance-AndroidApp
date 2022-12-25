@@ -5,6 +5,9 @@ plugins {
 android {
     namespace 'com.android.buildingmaintenanceapp'
     compileSdk 32
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.android.buildingmaintenanceapp"
