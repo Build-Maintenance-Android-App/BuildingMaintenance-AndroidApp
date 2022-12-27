@@ -2,6 +2,7 @@ package com.android.buildingmaintenanceapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -42,8 +43,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean loginUser(String emailInputVal, String passwInputVal) {
+
         return  false;
     }
 
 
+    // DELETE THIS LATER, IT S NOT NECESSARY
+    public void setBitmapImage(Bitmap response) {
+    }
 }
