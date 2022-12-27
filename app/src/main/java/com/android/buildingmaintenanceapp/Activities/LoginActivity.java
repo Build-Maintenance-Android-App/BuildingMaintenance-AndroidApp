@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.buildingmaintenanceapp.Endpoint;
-import com.android.buildingmaintenanceapp.MyVolleyUsage;
-import com.android.buildingmaintenanceapp.R;
 import com.android.buildingmaintenanceapp.URL;
 import com.android.buildingmaintenanceapp.databinding.ActivityLoginBinding;
 import com.android.volley.AuthFailureError;
@@ -45,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    MyVolleyUsage myVolley;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

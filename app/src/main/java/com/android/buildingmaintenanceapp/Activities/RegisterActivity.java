@@ -28,8 +28,7 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
     ActivityRegister2Binding binding;
     //Input vars
-    private String nameVal,passwInputVal,emailVal;
-    int buildingId;
+    private String nameVal,passwInputVal,emailVal,buildingId;
     //Volley vars
     RequestQueue queue;
     @Override
@@ -49,11 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
                 emailVal = binding.editTextResidentRegEmailAddress.getText().toString().trim();
                 passwInputVal = binding.editTextResidentRegPassword.getText().toString().trim();
                 nameVal = binding.editTextResidentRegName.getText().toString().trim();
-                String stringId = binding.editTextResidentRegNumber.getText().toString();
-                buildingId =Integer.parseInt(stringId) ;
+                buildingId =binding.editTextResidentRegNumber.getText().toString();
 
                 //VALIDATION
-                if(emailVal.isEmpty() || passwInputVal.isEmpty() || nameVal.isEmpty() || stringId.isEmpty())
+                if(emailVal.isEmpty() || passwInputVal.isEmpty() || nameVal.isEmpty() || buildingId.isEmpty())
                     Toast.makeText(RegisterActivity.this, "Please,fill all the fields", Toast.LENGTH_SHORT).show();
                 else
                     registerResident();
@@ -86,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     /* Post data with JSON notation */
-    public void sendPOSTRequestRegister(String urlString,String password,String email,String name,int buildingId) {
+    public void sendPOSTRequestRegister(String urlString,String password,String email,String name,String buildingId) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 urlString, new Response.Listener<String>() {
@@ -114,15 +112,13 @@ public class RegisterActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("password", password);
                 params.put("email",email);
-                params.put("buildingId",buildingId+"");
+                params.put("buildingId",buildingId);
                 params.put("name",nameVal);
 
                 return params;
             }
         };
         queue.add(stringRequest);
-
-
 
     }
 }
