@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/authHeader"
+        android:id="@+id/ResidentRegistHeader"
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:gravity="center"
@@ -19,7 +19,7 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextResidentRegEmailAddress"
         android:layout_width="233dp"
         android:layout_height="50dp"
         android:layout_marginStart="72dp"
@@ -33,7 +33,7 @@
         android:textColorHint="#25DD2C" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextResidentRegPassword"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -45,7 +45,7 @@
         android:textColorHighlight="#FF03DAC5"
         android:textColorHint="#25DD2C" />
         <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/editTextResidentRegNumber"
             android:layout_width="233dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
@@ -59,7 +59,7 @@
 
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/registerResidentBtn"
         android:layout_width="197dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
@@ -70,7 +70,7 @@
         android:text="@string/Register_Resident_text" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewAlready"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
@@ -84,7 +84,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButtonLoginPage"
             android:layout_width="210dp"
             android:layout_height="match_parent"
             android:buttonTint="#8BC34A"
@@ -93,7 +93,7 @@
             android:textColorLink="#8BC34A" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/radioButtonCreateBuild"
             android:layout_width="204dp"
             android:layout_height="62dp"
             android:layout_weight="1"

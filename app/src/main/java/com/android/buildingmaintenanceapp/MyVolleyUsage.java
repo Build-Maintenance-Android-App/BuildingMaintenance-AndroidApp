@@ -182,7 +182,7 @@ public class MyVolleyUsage {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(),
+                Toast.makeText(context, "Login Failed:Invalid email or password!",
                         Toast.LENGTH_LONG).show();
             }
         }) {

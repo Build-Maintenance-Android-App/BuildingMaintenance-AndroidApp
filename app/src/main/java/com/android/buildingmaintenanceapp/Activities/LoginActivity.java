@@ -38,8 +38,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 emailInputVal = binding.editTextTextEmailAddress.getText().toString();
                 passwInputVal = binding.editTextTextPassword.getText().toString();
-
-                loginUser(emailInputVal,passwInputVal);
+                if(emailInputVal.isEmpty() || passwInputVal.isEmpty())
+                    Toast.makeText(LoginActivity.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
+                else
+                    loginUser(emailInputVal,passwInputVal);
             }
         });
 
