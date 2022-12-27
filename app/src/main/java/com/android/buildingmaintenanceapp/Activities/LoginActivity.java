@@ -7,14 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.buildingmaintenanceapp.Endpoint;
+import com.android.buildingmaintenanceapp.MyVolleyUsage;
 import com.android.buildingmaintenanceapp.R;
+import com.android.buildingmaintenanceapp.URL;
 import com.android.buildingmaintenanceapp.databinding.ActivityLoginBinding;
 
 
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     private String emailInputVal,passwInputVal;
-    private boolean isLoggedIn = false;
+
+    MyVolleyUsage myVolley;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,28 +27,33 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
 
         setContentView(view);
+        myVolley = new MyVolleyUsage(this);
 
 
-        emailInputVal = binding.editTextTextEmailAddress.getText().toString();
-        passwInputVal = binding.editTextTextPassword.getText().toString();
+ ;
 
         // when you press login btn
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isLoggedIn= loginUser(emailInputVal,passwInputVal);
+                emailInputVal = binding.editTextTextEmailAddress.getText().toString();
+                passwInputVal = binding.editTextTextPassword.getText().toString();
+
+                loginUser(emailInputVal,passwInputVal);
             }
         });
 
-        if (isLoggedIn)
-            Toast.makeText(this, "Succesful logged in", Toast.LENGTH_SHORT).show();
+
+
 
 
     }
 
-    private boolean loginUser(String emailInputVal, String passwInputVal) {
+    private void loginUser(String emailInputVal, String passwInputVal) {
+        Toast.makeText(LoginActivity.this, emailInputVal+" "+passwInputVal, Toast.LENGTH_SHORT).show();
+        myVolley.sendPOSTRequestLogin(URL.BASE_URL + Endpoint.ENDPOINT_LOGIN,passwInputVal,emailInputVal);
 
-        return  false;
+
     }
 
 

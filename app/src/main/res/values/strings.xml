@@ -8,4 +8,7 @@
     <string name="authpageChangeTv">Don\'t you have an account?</string>
     <string name="choice1">Create a resident account</string>
     <string name="choice2">Create a Building Account</string>
+    <string name="Neighbours_header">See your neighbours</string>
+    <string name="settings_header">Settings</string>
+    <string name="Events_history_header">Events history</string>
 </resources>
