@@ -2,6 +2,7 @@ package com.android.buildingmaintenanceapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,5 +19,7 @@ public class Dashboard extends AppCompatActivity {
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        Intent receivedIntent = getIntent();
+
     }
 }
