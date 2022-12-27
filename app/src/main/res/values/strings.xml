@@ -11,4 +11,7 @@
     <string name="Neighbours_header">See your neighbours</string>
     <string name="settings_header">Settings</string>
     <string name="Events_history_header">Events history</string>
+    <string name="Create_Resident_Account">Resident Registration</string>
+    <string name="switchToLogin_text">Already you have a account?</string>
+    <string name="Register_Resident_text">Register</string>
 </resources>

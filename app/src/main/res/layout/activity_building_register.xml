@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbg"
     android:orientation="vertical"
-    tools:context=".Activities.RegisterActivity">
+    tools:context=".Activities.BuildingRegisterActivity">
 
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="@string/Create_Resident_Account"
+        android:text="Building Registration"
         android:textColor="@color/white"
         android:textSize="24sp" />
 
@@ -23,7 +23,7 @@
         android:layout_width="233dp"
         android:layout_height="50dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="348dp"
+        android:layout_marginTop="250dp"
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
@@ -44,22 +44,47 @@
         android:textColor="#F3EBEB"
         android:textColorHighlight="#FF03DAC5"
         android:textColorHint="#25DD2C" />
-        <EditText
-        android:id="@+id/editTextNumber"
-            android:layout_width="233dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:ems="10"
-            android:hint="@string/BuildingCode"
-            android:minHeight="48dp"
-            android:textColor="#F3EBEB"
-            android:textColorHighlight="#FF03DAC5"
-            android:textColorHint="#25DD2C"
-        android:inputType="number" />
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:ems="10"
+        android:hint="Manager Name:"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#F3EBEB"
+        android:textColorHighlight="#FF03DAC5"
+        android:textColorHint="#25DD2C" />
+    <EditText
+        android:id="@+id/editTextBuildingName"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:ems="10"
+        android:hint="Building Name:"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#F3EBEB"
+        android:textColorHighlight="#FF03DAC5"
+        android:textColorHint="#25DD2C" />
+    <EditText
+        android:id="@+id/editTextBuildingAddress"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:ems="10"
+        android:hint="Building Address:"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#F3EBEB"
+        android:textColorHighlight="#FF03DAC5"
+        android:textColorHint="#25DD2C" />
+
 
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/registerBtn"
         android:layout_width="197dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
@@ -67,14 +92,14 @@
         android:layout_marginBottom="44dp"
         android:backgroundTint="#1D1E20"
         android:gravity="center"
-        android:text="@string/Register_Resident_text" />
+        android:text="Register" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
-        android:text="@string/switchToLogin_text"
+        android:text="Already you have an account?"
         android:textColor="#4CAF50"
         android:textSize="20sp" />
 
@@ -88,8 +113,9 @@
             android:layout_width="210dp"
             android:layout_height="match_parent"
             android:buttonTint="#8BC34A"
-            android:text="Log in your account"
-            android:textColor="#F4F3EB"
+            android:text="@string/choice1"
+            android:textColor="#F3F1E5"
+            android:textColorHighlight="#4CAF50"
             android:textColorLink="#8BC34A" />
 
         <RadioButton
@@ -98,12 +124,12 @@
             android:layout_height="62dp"
             android:layout_weight="1"
             android:buttonTint="#8BC34A"
-            android:text="@string/choice2"
-            android:textColor="#F6F5EF" />
+            android:text="Log in to your account"
+            android:textColor="#EDECE2"
+            android:textColorHighlight="#4CAF50"
+            android:textColorLink="#8BC34A" />
 
     </RadioGroup>
-
-
 
 
 </LinearLayout>

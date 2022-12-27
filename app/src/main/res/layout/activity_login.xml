@@ -15,7 +15,7 @@
         android:layout_height="41dp"
         android:gravity="center"
         android:text="@string/Resident_AUTH_HEADER"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/white"
         android:textSize="24sp" />
 
     <EditText
@@ -75,16 +75,22 @@
             android:id="@+id/radioButton"
             android:layout_width="210dp"
             android:layout_height="match_parent"
+            android:buttonTint="#8BC34A"
             android:text="@string/choice1"
-            android:textColor="#FFEB3B" />
+            android:textColor="#F3F1E5"
+            android:textColorHighlight="#4CAF50"
+            android:textColorLink="#8BC34A" />
 
         <RadioButton
             android:id="@+id/radioButton6"
             android:layout_width="204dp"
             android:layout_height="62dp"
             android:layout_weight="1"
+            android:buttonTint="#8BC34A"
             android:text="@string/choice2"
-            android:textColor="#FFEB3B" />
+            android:textColor="#EDECE2"
+            android:textColorHighlight="#4CAF50"
+            android:textColorLink="#8BC34A" />
 
     </RadioGroup>
 
