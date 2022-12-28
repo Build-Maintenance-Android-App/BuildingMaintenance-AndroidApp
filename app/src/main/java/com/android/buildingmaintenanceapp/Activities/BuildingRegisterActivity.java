@@ -17,8 +17,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +41,7 @@ public class BuildingRegisterActivity extends AppCompatActivity {
         setContentView(view);
         Intent receivedIntent = getIntent();
         queue = Volley.newRequestQueue(BuildingRegisterActivity.this);
+        binding.progressBar.setVisibility(View.INVISIBLE);
 
         // when you click the building register btn
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +83,7 @@ public class BuildingRegisterActivity extends AppCompatActivity {
 
     }
     public void registerBuilding(){
-        sendPOSTRequestRegisterBuild(BASE_URL + Endpoint.ENDPOINT_REGISTER_BUILDING,passwInputVal,emailInputVal,managerNameVal,buildingAddress,buildingNameVal);
+        sendJsonRequest(BASE_URL + Endpoint.ENDPOINT_REGISTER_BUILDING,passwInputVal,emailInputVal,managerNameVal,buildingAddress,buildingNameVal);
     }
     /* Post data with JSON notation */
     public void sendPOSTRequestRegisterBuild(String urlString,String password,String email,String name,String buildingAddress,String buildingName) {
@@ -122,6 +127,56 @@ public class BuildingRegisterActivity extends AppCompatActivity {
         queue.add(stringRequest);
 
     }
+
+    public void sendJsonRequest(String urlString,String password,String email,String name,String buildingAddress,String buildingName){
+        Map<String, String> params = new HashMap();
+        params.put("password", password);
+        params.put("email",email);
+        params.put("buildingName",buildingName);
+        params.put("buildingAddress",buildingAddress);
+        params.put("name",name);
+        JSONObject parameters = new JSONObject(params);
+
+        binding.progressBar.setVisibility(View.VISIBLE);
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, urlString, parameters, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //TODO: handle success
+                binding.progressBar.setVisibility(View.INVISIBLE);
+                try {
+                    Toast.makeText(BuildingRegisterActivity.this, "Reg Success", Toast.LENGTH_SHORT).show();
+                    JSONObject user = new JSONObject((Map) response.getJSONObject("user"));
+                  String managerName =(String)user.get("name");
+                   // Boolean isManager= user.getBoolean("isManager");
+                    String buildingId =(String)response.get("buildingId");
+                    JSONObject building = new  JSONObject((Map) response.getJSONObject("building"));
+                   String buildingName = (String) building.get("buildingName");
+                    Toast.makeText(BuildingRegisterActivity.this, buildingName, Toast.LENGTH_SHORT).show();
+                    // clear inputs
+                    clearInputs();
+
+                    //go to dashboard activity
+                    Intent intent= new Intent(BuildingRegisterActivity.this, Dashboard.class);
+                    startActivity(intent);
+                }
+                catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(BuildingRegisterActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+                //TODO: handle failure
+            }
+        });
+        queue.add(jsonRequest);
+
+    }
+
+
     public void clearInputs(){
         binding.editTextBuildingAddress.setText("");
         binding.editTextBuildingName.setText("");

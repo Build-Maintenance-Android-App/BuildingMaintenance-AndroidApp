@@ -55,6 +55,11 @@ dependencies {
     // Cardview
     implementation 'androidx.cardview:cardview:1.0.0'
 
+
+    implementation 'com.squareup.okhttp:okhttp:2.7.0'
+    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.7.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+
     // Rounded ImageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
 

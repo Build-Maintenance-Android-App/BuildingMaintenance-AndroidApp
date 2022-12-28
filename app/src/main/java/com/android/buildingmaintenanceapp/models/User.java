@@ -1,16 +1,22 @@
 package com.android.buildingmaintenanceapp.models;
+import com.google.gson.annotations.SerializedName;
 
 public class User {
+    @SerializedName("name")
     private String name;
+    @SerializedName("email")
     private String email;
+    @SerializedName("isManager")
     private Boolean isManager;
-    private int BuildingId;
+    @SerializedName("buildingId")
+    private String buildingId;
 
-    public User(String name, String email, Boolean isManager, int buildingId) {
+    public User(String name, String email, Boolean isManager,String buildingId) {
         this.name = name;
         this.email = email;
         this.isManager = isManager;
-        BuildingId = buildingId;
+        this.buildingId = buildingId;
+
     }
 
     public String getName() {
@@ -24,8 +30,7 @@ public class User {
     public Boolean getManager() {
         return isManager;
     }
+    public String getBuildingId(){ return buildingId;}
 
-    public int getBuildingId() {
-        return BuildingId;
-    }
+
 }
