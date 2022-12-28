@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(view);
 
-
+        Intent receivedIntent = getIntent();
 
  ;
 
@@ -138,8 +138,13 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
 
                     //go to dashboard activity
-                    Intent intent= new Intent(LoginActivity.this, Dashboard.class);
+                    Intent intent = new Intent(LoginActivity.this, Dashboard.class);
+                    Bundle b = new Bundle();
+                    b.putParcelable("usr", usr);
+                    intent.putExtras(b);
                     startActivity(intent);
+
+
                 } catch (JSONException e) {
                     Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_LONG).show();
                     e.printStackTrace();

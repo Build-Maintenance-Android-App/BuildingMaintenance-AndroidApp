@@ -18,6 +18,30 @@
         android:background="@drawable/header_bg"
         android:padding="12dp"
         >
+        <ImageView
+            android:id="@+id/managerIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_admin_panel_settings_24"
+            android:tooltipText="Manager User"
+            />
+
+        <ImageView
+            android:id="@+id/residentIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_person_24"
+            android:tooltipText="Resident User"
+            />
+
+        <TextView
+            android:id="@+id/buildingIdTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Building Id:"
+            android:textIsSelectable="true"
+            android:textColor="#EDE2E2"
+            android:textSize="20sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +50,7 @@
             android:textSize="30sp"
             />
         <TextView
+            android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome,Doctor Code"
@@ -137,16 +162,17 @@
                     android:orientation="vertical"
                     android:gravity="center"
                     >
+
                     <ImageView
+                        android:id="@+id/createEventIconView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_people_24"
-                        />
+                        android:src="@drawable/ic_baseline_people_24" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/Neighbours_header"
+                        android:text="Create Event"
                         android:textAlignment="center" />
                 </LinearLayout>
 

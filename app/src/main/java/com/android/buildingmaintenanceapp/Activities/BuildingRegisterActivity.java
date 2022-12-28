@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +14,9 @@ import com.android.buildingmaintenanceapp.Endpoint;
 import com.android.buildingmaintenanceapp.R;
 import com.android.buildingmaintenanceapp.databinding.ActivityBuildingRegisterBinding;
 import com.android.buildingmaintenanceapp.databinding.ActivityDashboardBinding;
+import com.android.buildingmaintenanceapp.models.Building;
+import com.android.buildingmaintenanceapp.models.Event;
+import com.android.buildingmaintenanceapp.models.User;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,37 +81,59 @@ public class BuildingRegisterActivity extends AppCompatActivity {
         binding.radioButtonCreateResident.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BuildingRegisterActivity.this, Dashboard.class);
+                Intent intent = new Intent(BuildingRegisterActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
 
     }
     public void registerBuilding(){
-        sendJsonRequest(BASE_URL + Endpoint.ENDPOINT_REGISTER_BUILDING,passwInputVal,emailInputVal,managerNameVal,buildingAddress,buildingNameVal);
+        sendBuildingStringRequest(BASE_URL + Endpoint.ENDPOINT_REGISTER_BUILDING,passwInputVal,emailInputVal,managerNameVal,buildingAddress,buildingNameVal);
     }
-    /* Post data with JSON notation */
-    public void sendPOSTRequestRegisterBuild(String urlString,String password,String email,String name,String buildingAddress,String buildingName) {
 
+
+    public void sendBuildingStringRequest(String urlString,String password,String email,String name,String buildingAddress,String buildingName){
+
+
+        binding.progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(BuildingRegisterActivity.this, response,
-                        Toast.LENGTH_LONG).show();
+                binding.progressBar.setVisibility(View.INVISIBLE);
 
-                // clear inputs
-               clearInputs();
+                Toast.makeText(BuildingRegisterActivity.this,"succes login",Toast.LENGTH_SHORT).show();
+                try {
+                    // Getting JSONobject
+                    JSONObject jsonobject ;
+                    jsonobject =new JSONObject(response);
+                    JSONObject obj= jsonobject.getJSONObject("user");
+                    Log.d("obj:",obj+"");
 
-                //go to dashboard activity
-                Intent intent= new Intent(BuildingRegisterActivity.this, Dashboard.class);
-                startActivity(intent);
+                    ArrayList<Event>events= new ArrayList<>();
+
+
+                    Toast.makeText(BuildingRegisterActivity.this, "Bina id:"+obj.getString("buildingId")+" registered successfully",
+                            Toast.LENGTH_LONG).show();
+
+                    //go to login activity
+                    Intent intent = new Intent(BuildingRegisterActivity.this,LoginActivity.class);
+                    startActivity(intent);
+
+
+                } catch (JSONException e) {
+
+                    Toast.makeText(BuildingRegisterActivity.this,e.toString(),Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(BuildingRegisterActivity.this, "Building Register Failed",
+                binding.progressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(BuildingRegisterActivity.this, "Building Register Failed!",
                         Toast.LENGTH_LONG).show();
 
 
@@ -117,62 +144,16 @@ public class BuildingRegisterActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("password", password);
                 params.put("email",email);
+                params.put("name",name);
                 params.put("buildingName",buildingName);
                 params.put("buildingAddress",buildingAddress);
-                params.put("name",name);
 
                 return params;
             }
         };
+
         queue.add(stringRequest);
 
-    }
-
-    public void sendJsonRequest(String urlString,String password,String email,String name,String buildingAddress,String buildingName){
-        Map<String, String> params = new HashMap();
-        params.put("password", password);
-        params.put("email",email);
-        params.put("buildingName",buildingName);
-        params.put("buildingAddress",buildingAddress);
-        params.put("name",name);
-        JSONObject parameters = new JSONObject(params);
-
-        binding.progressBar.setVisibility(View.VISIBLE);
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, urlString, parameters, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                //TODO: handle success
-                binding.progressBar.setVisibility(View.INVISIBLE);
-                try {
-                    Toast.makeText(BuildingRegisterActivity.this, "Reg Success", Toast.LENGTH_SHORT).show();
-                    JSONObject user = new JSONObject((Map) response.getJSONObject("user"));
-                  String managerName =(String)user.get("name");
-                   // Boolean isManager= user.getBoolean("isManager");
-                    String buildingId =(String)response.get("buildingId");
-                    JSONObject building = new  JSONObject((Map) response.getJSONObject("building"));
-                   String buildingName = (String) building.get("buildingName");
-                    Toast.makeText(BuildingRegisterActivity.this, buildingName, Toast.LENGTH_SHORT).show();
-                    // clear inputs
-                    clearInputs();
-
-                    //go to dashboard activity
-                    Intent intent= new Intent(BuildingRegisterActivity.this, Dashboard.class);
-                    startActivity(intent);
-                }
-                catch (JSONException e){
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(BuildingRegisterActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                error.printStackTrace();
-                //TODO: handle failure
-            }
-        });
-        queue.add(jsonRequest);
 
     }
 
