@@ -41,8 +41,13 @@ public class Dashboard extends AppCompatActivity {
        binding.createEventIconView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(Dashboard.this,EventCreateActivity.class);
+               //go to event create activity
+               Intent intent = new Intent(Dashboard.this, EventCreateActivity.class);
+               Bundle b = new Bundle();
+               b.putParcelable("usr", user);
+               intent.putExtras(b);
                startActivity(intent);
+
 
            }
        });

@@ -110,12 +110,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/addBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Add"
         app:backgroundTint="#201F1F"
         app:icon="@drawable/ic_baseline_add_to_photos_24"></com.google.android.material.button.MaterialButton>
+
 
 
 </LinearLayout>
