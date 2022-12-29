@@ -41,6 +41,7 @@ public class EventsActivity extends AppCompatActivity {
     CustomRecyclerViewAdapter adapter;
     LinearLayoutManager layoutManager;
     ArrayList<Event>eventItems;
+    int jsonArraySize;
 
     User user =null;
     String exampleTitle;
@@ -84,6 +85,7 @@ public class EventsActivity extends AppCompatActivity {
                        ArrayList<Event>events=new ArrayList<Event>();
                        try {
                          JSONArray jsonArray=  response.getJSONArray("events");
+                         jsonArraySize=jsonArray.length();
                            Log.d("arrayLength",jsonArray.length()-1 +"");
                          for (int i=0;i<jsonArray.length()-1;i++)
                          {
@@ -104,44 +106,44 @@ public class EventsActivity extends AppCompatActivity {
                            Log.d("eventTitle",eventTitle);
                          }
 
+
+                         //gelen data boş ise
+
+
                        } catch (JSONException e) {
                            e.printStackTrace();
+
+
+                       }
+
+
+                       if(jsonArraySize==0){
                            binding.pBar.setVisibility(View.GONE);
+                           binding.recyclerViewEvents.setVisibility(View.INVISIBLE);
                            binding.txtNoData.setVisibility(View.VISIBLE);
-                           binding.recyclerViewEvents.setVisibility(View.GONE);
+                       }else{
+                           eventItems = new ArrayList<>();
+                           eventItems= events;
+                           binding.pBar.setVisibility(View.GONE);
+                           layoutManager = new LinearLayoutManager(EventsActivity.this);
+                           layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+
+                           adapter=new CustomRecyclerViewAdapter(eventItems);
+                           binding.recyclerViewEvents.setAdapter(adapter);
+                           binding.recyclerViewEvents.setLayoutManager(layoutManager);
+                           adapter.notifyDataSetChanged();
+
+                           //DEBUG
+                           for(int i=0;i<eventItems.size();i++){
+                               Log.d("received",eventItems.get(i).getEventTitle());
+
+                           }
                        }
 
 
-                       eventItems = new ArrayList<>();
-                       eventItems= events;
-                       binding.pBar.setVisibility(View.GONE);
-                       layoutManager = new LinearLayoutManager(EventsActivity.this);
-                       layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
 
-                       adapter=new CustomRecyclerViewAdapter(eventItems);
-                       binding.recyclerViewEvents.setAdapter(adapter);
-                       binding.recyclerViewEvents.setLayoutManager(layoutManager);
-                       adapter.notifyDataSetChanged();
-
-
-
-                       /*
-                       binding.recyclerViewEvents.setLayoutManager(layoutManager);
-                       binding.recyclerViewEvents.hasFixedSize();
-                       adapter = new CustomRecyclerViewAdapter(EventsActivity.this, eventItems);
-                       binding.recyclerViewEvents.setAdapter(adapter);
-
-                        */
-
-                       //array doldu
-
-
-                       //DEBUG
-                       for(int i=0;i<eventItems.size();i++){
-                           Log.d("received",eventItems.get(i).getEventTitle());
-
-                       }
 
 
                    }
