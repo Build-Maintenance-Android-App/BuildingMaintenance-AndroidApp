@@ -119,7 +119,6 @@ public class EventsActivity extends AppCompatActivity {
 
                        if(jsonArraySize==0){
                            binding.pBar.setVisibility(View.GONE);
-                           binding.recyclerViewEvents.setVisibility(View.INVISIBLE);
                            binding.txtNoData.setVisibility(View.VISIBLE);
                        }else{
                            eventItems = new ArrayList<>();
@@ -130,9 +129,11 @@ public class EventsActivity extends AppCompatActivity {
 
 
                            adapter=new CustomRecyclerViewAdapter(eventItems);
+                           adapter.notifyDataSetChanged();
                            binding.recyclerViewEvents.setAdapter(adapter);
                            binding.recyclerViewEvents.setLayoutManager(layoutManager);
-                           adapter.notifyDataSetChanged();
+                           binding.recyclerViewEvents.hasFixedSize();
+
 
                            //DEBUG
                            for(int i=0;i<eventItems.size();i++){
