@@ -106,6 +106,9 @@ public class EventsActivity extends AppCompatActivity {
 
                        } catch (JSONException e) {
                            e.printStackTrace();
+                           binding.pBar.setVisibility(View.GONE);
+                           binding.txtNoData.setVisibility(View.VISIBLE);
+                           binding.recyclerViewEvents.setVisibility(View.GONE);
                        }
 
 
