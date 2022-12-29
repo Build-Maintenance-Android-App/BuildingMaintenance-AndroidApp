@@ -64,19 +64,13 @@ public class EventsActivity extends AppCompatActivity {
 
 
     // Use received events for the adapter
-       ArrayList<Event> receivedEvents =getEventsFromAPI( URL.BASE_URL+ Endpoint.ENDPOINT_FETCH_ALL_EVENTS+"/"+user.getBuildingId());
-        layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        binding.recyclerEvents.setLayoutManager(layoutManager);
-        binding.recyclerEvents.hasFixedSize();
-        adapter = new CustomRecyclerViewAdapter(this, receivedEvents);
-        binding.recyclerEvents.setAdapter(adapter);
+      getEventsFromAPI( URL.BASE_URL+ Endpoint.ENDPOINT_FETCH_ALL_EVENTS+"/"+user.getBuildingId());
 
         
     }
 
 
-   public ArrayList<Event>getEventsFromAPI(String urlString){
+   public void getEventsFromAPI(String urlString){
 
            // To get
        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -114,6 +108,18 @@ public class EventsActivity extends AppCompatActivity {
 
 
                        eventItems=events;
+                       layoutManager = new LinearLayoutManager(EventsActivity.this);
+                       layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                       binding.recyclerEvents.setLayoutManager(layoutManager);
+                       binding.recyclerEvents.hasFixedSize();
+                       adapter = new CustomRecyclerViewAdapter(EventsActivity.this, eventItems);
+                       binding.recyclerEvents.setAdapter(adapter);
+
+                       //DEBUG
+                       for(int i=0;i<eventItems.size();i++){
+                           Log.d("received",eventItems.get(i).getEventTitle());
+                       }
+
                    }
                }, new Response.ErrorListener() {
            @Override
@@ -129,6 +135,6 @@ public class EventsActivity extends AppCompatActivity {
        // Add the request to the RequestQueue.
            queue.add(jsonObjectRequest);
 
-    return eventItems;
+
    }
 }
