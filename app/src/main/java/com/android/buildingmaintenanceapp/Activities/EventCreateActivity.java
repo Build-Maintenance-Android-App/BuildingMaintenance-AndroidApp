@@ -53,12 +53,13 @@ public class EventCreateActivity extends AppCompatActivity {
         binding.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //GET TEXT FROM INPUTS
                  eventTitle =binding.titleField.getEditText().getText().toString();
                 functionalArea=binding.functionField.getEditText().getText().toString();
                 condition = binding.conditionField.getEditText().getText().toString();
                 eventDescription=binding.descriptionField.getEditText().toString();
                 serviceNo = binding.serviceField.getEditText().toString();
-
+                //VALIDATE
                 if(eventTitle.isEmpty() || functionalArea.isEmpty() || condition.isEmpty() || eventDescription.isEmpty()|| serviceNo.isEmpty())
                     Toast.makeText(EventCreateActivity.this, "Please fill all the fields!", Toast.LENGTH_SHORT).show();
                 else
@@ -108,7 +109,10 @@ public class EventCreateActivity extends AppCompatActivity {
 
 
                     //go to dashboard activity
-                    Intent intent = new Intent(EventCreateActivity.this, EventsActivity.class);
+                    Intent intent = new Intent(EventCreateActivity.this, EventsActivity.class);;
+                     Bundle b = new Bundle();
+                     b.putParcelable("usr", user);
+                      intent.putExtras(b);
                     startActivity(intent);
 
 

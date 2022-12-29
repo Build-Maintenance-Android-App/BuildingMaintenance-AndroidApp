@@ -3,6 +3,7 @@ package com.android.buildingmaintenanceapp.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,17 @@ public class Dashboard extends AppCompatActivity {
 
            }
        });
+
+        binding.managerIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, EventsActivity.class);
+                Bundle b = new Bundle();
+                b.putParcelable("usr", user);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
 
 
 
