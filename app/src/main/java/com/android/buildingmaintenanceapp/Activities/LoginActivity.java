@@ -7,18 +7,13 @@ import androidx.loader.app.LoaderManager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 
-import android.content.Context;
-import android.os.AsyncTask;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,20 +21,12 @@ import com.android.buildingmaintenanceapp.Endpoint;
 import com.android.buildingmaintenanceapp.URL;
 import com.android.buildingmaintenanceapp.databinding.ActivityLoginBinding;
 import com.android.buildingmaintenanceapp.models.User;
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import com.google.gson.Gson;
 
 
 import java.util.HashMap;
@@ -67,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(view);
 
         Intent receivedIntent = getIntent();
+        binding.animationView.setVisibility(View.INVISIBLE);
 
  ;
 
@@ -105,15 +93,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String emailInputVal, String passwInputVal) {
-        Toast.makeText(LoginActivity.this, emailInputVal+" "+passwInputVal, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(LoginActivity.this, emailInputVal+" "+passwInputVal, Toast.LENGTH_SHORT).show();
        sendPOSTRequestLogin(URL.BASE_URL + Endpoint.ENDPOINT_LOGIN,passwInputVal,emailInputVal);
-        Toast.makeText(LoginActivity.this, "change activity started", Toast.LENGTH_SHORT).show();
-
+        //Toast.makeText(LoginActivity.this, "change activity started", Toast.LENGTH_SHORT).show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                // Actions to do after 5 seconds
+                binding.animationView.setVisibility(View.INVISIBLE);
+            }
+        }, 3000);
 
     }
 
 
+private void changeActivity(Intent intent, Context from, User usr)
+{  //go to dashboard activity
+     intent = new Intent(from ,Dashboard.class);
+    Bundle b = new Bundle();
+    b.putParcelable("usr", usr);
+    intent.putExtras(b);
+    startActivity(intent);
 
+
+
+}
 
     /* Post data with JSON notation */
     public void sendPOSTRequestLogin(String urlString,String password,String email) {
@@ -122,8 +126,9 @@ public class LoginActivity extends AppCompatActivity {
                 urlString, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                binding.animationView.setVisibility(View.VISIBLE);
 
-                    Toast.makeText(LoginActivity.this,"succes login",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this,"succes login",Toast.LENGTH_SHORT).show();
                 try {
                     // Getting JSONobject
                     JSONObject jsonobject ;
@@ -134,18 +139,24 @@ public class LoginActivity extends AppCompatActivity {
 
                   User usr= new User(obj.getString("name"),obj.getString("email"),obj.getBoolean("isManager"),obj.getString("buildingId"));
 
-                    Toast.makeText(LoginActivity.this, "Bina id:"+usr.getBuildingId(),
-                            Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(LoginActivity.this, "Bina id:"+usr.getBuildingId(),
+                      //      Toast.LENGTH_LONG).show();
+
+
 
                     //go to dashboard activity
                     Intent intent = new Intent(LoginActivity.this, Dashboard.class);
-                    Bundle b = new Bundle();
-                    b.putParcelable("usr", usr);
-                    intent.putExtras(b);
-                    startActivity(intent);
 
 
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            // Actions to do after 5 seconds
+                            changeActivity(intent,LoginActivity.this,usr);
+                        }
+                    }, 3000);
                 } catch (JSONException e) {
+
                     Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
@@ -155,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                binding.animationView.setVisibility(View.INVISIBLE);
                 Toast.makeText(LoginActivity.this, "Login Failed:Invalid email or password!",
                         Toast.LENGTH_LONG).show();
 
