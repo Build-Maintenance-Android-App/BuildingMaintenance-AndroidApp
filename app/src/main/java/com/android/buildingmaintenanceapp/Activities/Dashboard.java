@@ -53,7 +53,7 @@ public class Dashboard extends AppCompatActivity {
            }
        });
 
-        binding.managerIcon.setOnClickListener(new View.OnClickListener() {
+        binding.manageEventIconView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, EventsActivity.class);

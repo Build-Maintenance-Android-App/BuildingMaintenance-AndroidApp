@@ -35,4 +35,6 @@ public class Event {
     public String getServiceContactPhone() {
         return serviceContactPhone;
     }
+
+
 }

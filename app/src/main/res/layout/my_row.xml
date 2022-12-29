@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainLayout"
+    android:orientation="vertical"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+
+    android:background="@drawable/shape"
+
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/txteventTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Kalorifer Arızası"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="2dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="@+id/eventTitle"
+        app:srcCompat="@drawable/ic_baseline_access_time_24"
+        tools:layout_editor_absoluteY="37dp"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="center"
+
+        />
+    <TextView
+        android:id="@+id/txteventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12/29/2022"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eventTitle"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        android:layout_marginLeft="10dp"
+        />
+
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            app:srcCompat="@drawable/ic_baseline_event_24" />
+
+        <TextView
+            android:id="@+id/txteventDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Odamdaki kalorifer çalışmıyor, ilgilenirseniz sevinirim.
+Sanırım peteklerin havasının alinmasi gerek."
+            android:layout_marginLeft="10dp"
+            android:padding="2dp"
+
+            android:textColor="@color/black"
+            android:textSize="10dp"
+
+            android:layout_marginBottom="2dp"
+            />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="2dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Area:"
+            android:textSize="12dp"
+            android:layout_marginLeft="15dp"
+            android:padding="2dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txtFunctionalArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="C building floor 2 room 45"
+            android:textColor="@color/black"
+            android:padding="2dp"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Condition:"
+            android:textSize="12dp"
+            android:layout_marginLeft="15dp"
+            android:padding="2dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txtCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Arıza"
+            android:padding="2dp"
+            android:textColor="@color/black"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="22dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:padding="1dp"
+            app:srcCompat="@drawable/ic_baseline_contact_phone_24" />
+
+        <TextView
+            android:id="@+id/txtServiceContact"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:padding="2dp"
+            android:text="05452816721"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+
+            />
+
+        <ImageView
+            android:id="@+id/btnImageDelete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+           android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/ic_baseline_delete_forever_24" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

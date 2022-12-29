@@ -86,6 +86,7 @@
                 app:cardCornerRadius="8dp"
                 android:layout_margin="12dp"
                 android:background="#fff"
+
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,6 +98,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_event_24"
+                    android:id="@+id/manageEventIconView"
                         />
 
                     <TextView

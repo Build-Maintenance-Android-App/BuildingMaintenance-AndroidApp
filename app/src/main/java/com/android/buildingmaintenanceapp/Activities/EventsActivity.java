@@ -66,6 +66,8 @@ public class EventsActivity extends AppCompatActivity {
     // Use received events for the adapter
       getEventsFromAPI( URL.BASE_URL+ Endpoint.ENDPOINT_FETCH_ALL_EVENTS+"/"+user.getBuildingId());
 
+
+
         
     }
 
@@ -107,18 +109,37 @@ public class EventsActivity extends AppCompatActivity {
                        }
 
 
-                       eventItems=events;
+                       eventItems = new ArrayList<>();
+                       eventItems= events;
+                       binding.pBar.setVisibility(View.GONE);
                        layoutManager = new LinearLayoutManager(EventsActivity.this);
                        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                       binding.recyclerEvents.setLayoutManager(layoutManager);
-                       binding.recyclerEvents.hasFixedSize();
+
+
+                       adapter=new CustomRecyclerViewAdapter(eventItems);
+                       binding.recyclerViewEvents.setAdapter(adapter);
+                       binding.recyclerViewEvents.setLayoutManager(layoutManager);
+                       adapter.notifyDataSetChanged();
+
+
+
+                       /*
+                       binding.recyclerViewEvents.setLayoutManager(layoutManager);
+                       binding.recyclerViewEvents.hasFixedSize();
                        adapter = new CustomRecyclerViewAdapter(EventsActivity.this, eventItems);
-                       binding.recyclerEvents.setAdapter(adapter);
+                       binding.recyclerViewEvents.setAdapter(adapter);
+
+                        */
+
+                       //array doldu
+
 
                        //DEBUG
                        for(int i=0;i<eventItems.size();i++){
                            Log.d("received",eventItems.get(i).getEventTitle());
+
                        }
+
 
                    }
                }, new Response.ErrorListener() {
@@ -137,4 +158,9 @@ public class EventsActivity extends AppCompatActivity {
 
 
    }
+
+  public void printOneEvent(){
+        Event event= eventItems.get(0);
+        Log.v("Dönen İlk item",event.toString());
+  }
 }
