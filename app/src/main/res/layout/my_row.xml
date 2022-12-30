@@ -5,7 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:background="@drawable/shape"
+    android:background="@drawable/images"
 
     android:orientation="vertical"
 

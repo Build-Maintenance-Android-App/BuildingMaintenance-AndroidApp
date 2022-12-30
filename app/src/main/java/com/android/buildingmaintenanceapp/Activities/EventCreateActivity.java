@@ -57,8 +57,8 @@ public class EventCreateActivity extends AppCompatActivity {
                  eventTitle =binding.titleField.getEditText().getText().toString();
                 functionalArea=binding.functionField.getEditText().getText().toString();
                 condition = binding.conditionField.getEditText().getText().toString();
-                eventDescription=binding.descriptionField.getEditText().toString();
-                serviceNo = binding.serviceField.getEditText().toString();
+                eventDescription=binding.descriptionField.getEditableText().toString();
+                serviceNo = binding.servicef.getEditableText().toString();
                 //VALIDATE
                 if(eventTitle.isEmpty() || functionalArea.isEmpty() || condition.isEmpty() || eventDescription.isEmpty()|| serviceNo.isEmpty())
                     Toast.makeText(EventCreateActivity.this, "Please fill all the fields!", Toast.LENGTH_SHORT).show();
@@ -78,8 +78,9 @@ public class EventCreateActivity extends AppCompatActivity {
         binding.titleField.getEditText().setText("");
         binding.functionField.getEditText().setText("");
         binding.conditionField.getEditText().setText("");
-        binding.descriptionField.getEditText().setText("");
+        binding.descriptionField2.getEditText().setText("");
         binding.serviceField.getEditText().setText("");
+
 
     }
 
@@ -93,9 +94,10 @@ public class EventCreateActivity extends AppCompatActivity {
                 //GET CURRENT TIME
                 String date;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E, MMM dd yyyy HH:mm:ss");
                     LocalDateTime now = LocalDateTime.now();
                     date=dtf.format(now).toString();
+
                 }
                 else
                     date="";

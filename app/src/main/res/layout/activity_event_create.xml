@@ -87,13 +87,14 @@
         app:boxBackgroundColor="#75CA79">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/servicef"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="10dp"
-        android:id="@+id/descriptionField"
+        android:id="@+id/descriptionField2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Event Description:"
@@ -104,6 +105,7 @@
         app:boxBackgroundColor="#75CA79">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionField"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
 
