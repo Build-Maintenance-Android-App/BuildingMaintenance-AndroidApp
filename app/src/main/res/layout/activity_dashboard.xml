@@ -93,18 +93,23 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
+
+
+                    android:id="@+id/manageEventLinearlayout"
                     >
+
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:src="@drawable/ic_baseline_event_24"
                     android:id="@+id/manageEventIconView"
                         />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Manage events"
+                        android:textSize="20sp"
                         android:textAlignment="center" />
                 </LinearLayout>
 
@@ -124,17 +129,20 @@
                     android:orientation="vertical"
                     android:gravity="center"
                     >
+
                     <ImageView
+
                         android:id="@+id/favHome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:src="@drawable/ic_baseline_home_work_24"
                         />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Events_history_header"
+                        android:textSize="20sp"
                         android:textAlignment="center" />
                 </LinearLayout>
 
@@ -168,14 +176,15 @@
 
                     <ImageView
                         android:id="@+id/createEventIconView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:src="@drawable/ic_baseline_people_24" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Create Event"
+                        android:textSize="20sp"
                         android:textAlignment="center" />
                 </LinearLayout>
 
@@ -189,23 +198,23 @@
                 android:layout_margin="12dp"
                 android:background="#fff"
                 >
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:gravity="center"
-                    >
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_settings_24"
-                        />
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
+                    <com.google.android.material.button.MaterialButton
+
+                        android:id="@+id/btnLogOut"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/settings_header"
-                        android:textAlignment="center" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+                        app:icon="@drawable/ic_baseline_exit_to_app_24"
+                        app:iconGravity="textStart" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
