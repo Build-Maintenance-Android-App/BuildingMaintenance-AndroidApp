@@ -65,6 +65,14 @@ public class Dashboard extends AppCompatActivity {
         });
 
 
+    binding.favHome.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Dashboard.this, FavsActivity.class);
+            startActivity(intent);
+        }
+    });
+
 
     }
 }

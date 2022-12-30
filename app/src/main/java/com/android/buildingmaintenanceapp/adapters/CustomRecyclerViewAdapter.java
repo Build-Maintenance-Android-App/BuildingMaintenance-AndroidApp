@@ -1,27 +1,38 @@
 package com.android.buildingmaintenanceapp.adapters;
 
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.buildingmaintenanceapp.Activities.DatabaseHelper;
+import com.android.buildingmaintenanceapp.Activities.EventTable;
+import com.android.buildingmaintenanceapp.Activities.MainActivity;
 import com.android.buildingmaintenanceapp.R;
+import com.android.buildingmaintenanceapp.SysApp;
 import com.android.buildingmaintenanceapp.models.Event;
 
 import java.util.ArrayList;
 
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecyclerViewAdapter.MyViewHolder> {
-
+    DatabaseHelper dbHelper;
+    Context context;
 
     private ArrayList<Event>allEvents;
-    public CustomRecyclerViewAdapter(ArrayList<Event>allEvents) {
+    public CustomRecyclerViewAdapter(Context context,ArrayList<Event>allEvents) {
         this.allEvents=allEvents;
+        this.context=context;
+        dbHelper = new DatabaseHelper(context);
     }
+
 
     @NonNull
     @Override
@@ -33,12 +44,24 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
     @Override
     public void onBindViewHolder(@NonNull CustomRecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.txtEventTitle.setText(allEvents.get(position).getEventTitle());
-        holder.txtEventDate.setText(allEvents.get(position).getEventDate());
-        holder.txtEventDesc.setText(allEvents.get(position).getEventDescription());
-        holder.txtArea.setText(allEvents.get(position).getFunctionalArea());
-        holder.txtCondition.setText(allEvents.get(position).getCondition());
-        holder.txtContact.setText(allEvents.get(position).getServiceContactPhone());
+        final Event event = SysApp.getEvents().get(position);
+        holder.txtEventTitle.setText(event.getEventTitle());
+        holder.txtEventDate.setText(event.getEventDate());
+        holder.txtEventDesc.setText(event.getEventDescription());
+        holder.txtArea.setText(event.getFunctionalArea());
+        holder.txtCondition.setText(event.getCondition());
+        holder.txtContact.setText(event.getServiceContactPhone());
+
+        holder.btnfav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                boolean resinser = EventTable.insertEvent(dbHelper,event.getEventTitle(), event.getEventDate(), event.getCondition(), event.getServiceContactPhone(), event.getFunctionalArea() ,event.getEventDescription());
+                Log.d("insert",resinser+"");
+            }
+        });
+
+
     }
 
     @Override
@@ -50,6 +73,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView txtEventTitle,txtEventDate,txtEventDesc,txtArea,txtCondition,
                 txtContact;
+        ImageView btnfav,btndelete;
 
 
         public MyViewHolder(@NonNull View singleEvent) {
@@ -60,6 +84,9 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
             txtArea=singleEvent.findViewById(R.id.txtFunctionalArea);
             txtCondition=singleEvent.findViewById(R.id.txtCondition);
             txtContact=singleEvent.findViewById(R.id.txtServiceContact);
+            btnfav =singleEvent.findViewById(R.id.btnfav);
+            btndelete=singleEvent.findViewById(R.id.btnImageDelete);
+
 
 
         }

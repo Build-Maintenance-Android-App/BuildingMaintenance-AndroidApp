@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.android.buildingmaintenanceapp.Endpoint;
 import com.android.buildingmaintenanceapp.R;
+import com.android.buildingmaintenanceapp.SysApp;
 import com.android.buildingmaintenanceapp.URL;
 import com.android.buildingmaintenanceapp.adapters.CustomRecyclerViewAdapter;
 import com.android.buildingmaintenanceapp.databinding.ActivityEventsBinding;
@@ -85,6 +86,7 @@ public class EventsActivity extends AppCompatActivity {
                        ArrayList<Event>events=new ArrayList<Event>();
                        try {
                          JSONArray jsonArray=  response.getJSONArray("events");
+
                          jsonArraySize=jsonArray.length();
                            Log.d("arrayLength",jsonArray.length()-1 +"");
                          for (int i=0;i<jsonArray.length()-1;i++)
@@ -119,7 +121,7 @@ public class EventsActivity extends AppCompatActivity {
 
                        if(jsonArraySize==0){
                            binding.pBar.setVisibility(View.GONE);
-                           binding.txtNoData.setVisibility(View.VISIBLE);
+                           binding.txtNoDatafav.setVisibility(View.VISIBLE);
                        }else{
                            eventItems = new ArrayList<>();
                            eventItems= events;
@@ -128,11 +130,11 @@ public class EventsActivity extends AppCompatActivity {
                            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
 
-                           adapter=new CustomRecyclerViewAdapter(eventItems);
+                           adapter=new CustomRecyclerViewAdapter(EventsActivity.this,eventItems);
                            adapter.notifyDataSetChanged();
-                           binding.recyclerViewEvents.setAdapter(adapter);
-                           binding.recyclerViewEvents.setLayoutManager(layoutManager);
-                           binding.recyclerViewEvents.hasFixedSize();
+                           binding.recyclereal.setAdapter(adapter);
+                           binding.recyclereal.setLayoutManager(layoutManager);
+                           binding.recyclereal.hasFixedSize();
 
 
                            //DEBUG
@@ -140,6 +142,8 @@ public class EventsActivity extends AppCompatActivity {
                                Log.d("received",eventItems.get(i).getEventTitle());
 
                            }
+
+                           SysApp.setData(eventItems);
                        }
 
 

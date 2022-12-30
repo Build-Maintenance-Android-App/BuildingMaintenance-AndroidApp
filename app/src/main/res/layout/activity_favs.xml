@@ -17,32 +17,27 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="Events"
+            android:text="Favs"
             android:textColor="@color/teal_200"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_gravity="center"
 
             />
-        <ProgressBar
-            android:id="@+id/pBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:visibility="visible"
-            />
+
+
         <ScrollView
+            android:id="@+id/favsrecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclereal"
+                android:id="@+id/recyclerFv"
                 android:layout_width="match_parent"
                 android:layout_height="590dp"
                 android:layout_marginTop="25dp"
-                android:padding="15dp"/>
+                android:padding="15dp" />
 
         </ScrollView>
         <TextView
