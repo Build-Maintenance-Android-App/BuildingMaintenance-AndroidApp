@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.buildingmaintenanceapp.R;
 import com.android.buildingmaintenanceapp.databinding.ActivityDashboardBinding;
@@ -39,6 +42,31 @@ public class Dashboard extends AppCompatActivity {
         Log.d("usr:",user+"");
        binding.welcome.setText("Welcome Dear "+user.getName());
 
+        binding.btnLogOut.setOnTouchListener(new View.OnTouchListener() {
+            GestureDetector gestureDetector = new GestureDetector(getApplicationContext(),new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onDoubleTap(MotionEvent e) {
+                    Toast.makeText(Dashboard.this, "LOG OUT", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Dashboard.this,LoginActivity.class);
+                    startActivity(intent);
+
+                    return super.onDoubleTap(e);
+                }
+            });
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+                return false;
+            }
+        });
+
+
+
+
+
+
+
+
        binding.createEventIconView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -53,6 +81,8 @@ public class Dashboard extends AppCompatActivity {
            }
        });
 
+
+
         binding.manageEventIconView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +93,8 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
     binding.favHome.setOnClickListener(new View.OnClickListener() {
