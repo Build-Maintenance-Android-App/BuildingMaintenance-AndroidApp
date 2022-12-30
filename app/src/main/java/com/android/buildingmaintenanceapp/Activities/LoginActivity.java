@@ -7,6 +7,7 @@ import androidx.loader.app.LoaderManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -18,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.android.buildingmaintenanceapp.Endpoint;
+import com.android.buildingmaintenanceapp.R;
 import com.android.buildingmaintenanceapp.URL;
 import com.android.buildingmaintenanceapp.databinding.ActivityLoginBinding;
 import com.android.buildingmaintenanceapp.models.User;
@@ -41,6 +43,10 @@ public class LoginActivity extends AppCompatActivity {
     Context context;
 
     LoaderManager loaderManager=null;
+    private MediaPlayer mp;
+    private MediaPlayer mpFail;
+
+
 
 
     @Override
@@ -55,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent receivedIntent = getIntent();
         binding.animationView.setVisibility(View.INVISIBLE);
+        mp = MediaPlayer.create(LoginActivity.this, R.raw.success);
+        mpFail=MediaPlayer.create(LoginActivity.this,R.raw.wrong);
 
  ;
 
@@ -64,10 +72,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 emailInputVal = binding.editTextTextEmailAddress.getText().toString();
                 passwInputVal = binding.editTextTextPassword.getText().toString();
-                if(emailInputVal.isEmpty() || passwInputVal.isEmpty())
+                if(emailInputVal.isEmpty() || passwInputVal.isEmpty()){
                     Toast.makeText(LoginActivity.this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
-                else
+                    //login fail sound
+                    mpFail.start();
+                }
+                else{
                     loginUser(emailInputVal,passwInputVal);
+                }
             }
         });
 
@@ -147,6 +159,8 @@ private void changeActivity(Intent intent, Context from, User usr)
                     //go to dashboard activity
                     Intent intent = new Intent(LoginActivity.this, Dashboard.class);
 
+                    //Login succes play sound
+                    mp.start();
 
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -158,6 +172,8 @@ private void changeActivity(Intent intent, Context from, User usr)
                 } catch (JSONException e) {
 
                     Toast.makeText(LoginActivity.this,e.toString(),Toast.LENGTH_LONG).show();
+                    //login fail sound
+                    mpFail.start();
                     e.printStackTrace();
                 }
 
@@ -167,6 +183,8 @@ private void changeActivity(Intent intent, Context from, User usr)
             @Override
             public void onErrorResponse(VolleyError error) {
                 binding.animationView.setVisibility(View.INVISIBLE);
+                //login fail sound
+                mpFail.start();
                 Toast.makeText(LoginActivity.this, "Login Failed:Invalid email or password!",
                         Toast.LENGTH_LONG).show();
 
