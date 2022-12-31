@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecyclerViewAdapter.MyViewHolder> {
     DatabaseHelper dbHelper;
     Context context;
+    Boolean isPressed =false;
 
     private ArrayList<Event>allEvents;
     public CustomRecyclerViewAdapter(Context context,ArrayList<Event>allEvents) {
@@ -52,12 +54,24 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
         holder.txtCondition.setText(event.getCondition());
         holder.txtContact.setText(event.getServiceContactPhone());
 
+
         holder.btnfav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
-                boolean resinser = EventTable.insertEvent(dbHelper,event.getEventTitle(), event.getEventDate(), event.getCondition(), event.getServiceContactPhone(), event.getFunctionalArea() ,event.getEventDescription());
-                Log.d("insert",resinser+"");
+                if(!isPressed)
+                    isPressed=true;
+                else
+                    isPressed=false;
+
+                if(isPressed)
+                { holder.btnfav.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    boolean resinser = EventTable.insertEvent(dbHelper,event.getEventTitle(), event.getEventDate(), event.getCondition(), event.getServiceContactPhone(), event.getFunctionalArea() ,event.getEventDescription());
+                    Log.d("insert",resinser+"");
+                }
+                else
+                    holder.btnfav.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+
+
             }
         });
 

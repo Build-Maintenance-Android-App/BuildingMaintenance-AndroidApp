@@ -104,7 +104,7 @@ public class EventCreateActivity extends AppCompatActivity {
 
                 // Add to Arraylist
                 Event event= new Event(eventTitle,date,eventDescription,functionalArea,condition,serviceNo);
-                SysApp.addEvent(event);
+                //SysApp.addEvent(event);
 
                 Toast.makeText(EventCreateActivity.this,"Event Created Successfully",Toast.LENGTH_SHORT).show();
 
