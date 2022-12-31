@@ -12,12 +12,14 @@
     <TextView
         android:id="@+id/authHeader"
         android:layout_width="match_parent"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#2F4F534F"
         android:gravity="center"
-        android:text="@string/Resident_AUTH_HEADER"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
-
+        android:text="@string/app_name"
+        android:textColor="#FFC107"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"

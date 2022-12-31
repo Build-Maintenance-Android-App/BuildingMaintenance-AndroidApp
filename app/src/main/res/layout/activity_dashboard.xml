@@ -93,6 +93,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
+                    android:background="#99D2DAD2"
 
 
                     android:id="@+id/manageEventLinearlayout"
@@ -109,6 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Manage events"
+
                         android:textSize="20sp"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -128,6 +130,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
+                    android:background="#99D2DAD2"
                     >
 
                     <ImageView
@@ -172,6 +175,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
+                    android:background="#99D2DAD2"
+
                     >
 
                     <ImageView
@@ -203,14 +208,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="#99D2DAD2"
+                    >
 
                     <com.google.android.material.button.MaterialButton
 
                         android:id="@+id/btnLogOut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:layout_width="102dp"
+                        android:layout_height="84dp"
+                        android:backgroundTint="#2196F3"
                         android:textSize="20sp"
 
                         app:icon="@drawable/ic_baseline_exit_to_app_24"

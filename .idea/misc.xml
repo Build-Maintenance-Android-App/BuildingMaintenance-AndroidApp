@@ -9,12 +9,13 @@
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/drawable/ic_baseline_event_24.xml" value="0.3635" />
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/drawable/ic_baseline_home_work_24.xml" value="0.3635" />
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/drawable/shape.xml" value="0.3485" />
-        <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_dashboard.xml" value="0.176" />
+        <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_event_create.xml" value="0.3625" />
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_events.xml" value="0.3625" />
+        <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_favs.xml" value="0.25" />
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_login.xml" value="0.3625" />
         <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/activity_main.xml" value="0.23148148148148148" />
-        <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/my_row.xml" value="0.5" />
+        <entry key="..\:/Users/PC/Desktop/BuildingMaintenance-AndroidApp/app/src/main/res/layout/my_row.xml" value="0.33" />
       </map>
     </option>
   </component>
